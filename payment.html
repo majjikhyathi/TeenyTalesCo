@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment | TeenyTalesCo</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fff8f4;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #4a4a4a;
+    }
+
+    .confirmation-box {
+      background-color: #ffeef8;
+      border-radius: 20px;
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background-color: #ffb6d9;
+      color: white;
+      font-size: 1.1rem;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff99cc;
+    }
+
+    h2 {
+      color: #d63384;
+    }
+  </style>
+</head>
+<body>
+
+<div class="confirmation-box">
+  <h2>💗 Almost done!</h2>
+  <p style="font-size: 1.1rem;">
+    If you’ve completed your payment via PhonePe / GPay / Paytm,
+    click the button below to send confirmation.
+  </p>
+
+  <button onclick="sendOrderEmails()">I Have Paid</button>
+
+  <p style="margin-top: 1.2rem;">OR</p>
+
+  <a href="https://wa.me/918125298774?text=Hi! I’ve completed payment for my TeenyTalesCo order. Here’s my payment screenshot."
+     target="_blank">
+    <button style="background-color: #4CAF50;">Send Payment Screenshot on WhatsApp</button>
+  </a>
+</div>
+<script>
+  emailjs.init("I5EM659F08cR3gOdn");
+
+  const details = JSON.parse(localStorage.getItem("teenytales_order")) || {};
+
+  function sendOrderEmails() {
+    const emailParams = {
+      user_name: details.name,
+      user_email: details.email,
+      user_phone: details.phone,
+      user_address: details.address,
+      cart_details: details.cart.map(item => ${item.name} × ${item.quantity}).join(', '),
+      total_amount: ₹${details.amount}
+    };
+
+    emailjs.send("service_7vkkn3b", "template_40ksvuq", emailParams)
+      .then(() => {
+        return emailjs.send("service_7vkkn3b", "template_5obh1ue", emailParams);
+      })
+      .then(() => {
+        localStorage.removeItem("teenytales_order");
+        window.location.href = "thanks.html";
+      })
+      .catch((error) => {
+        alert("Something went wrong. Please try again.");
+        console.error(error);
+      });
+  }
+</script>
+</body>
+</html>

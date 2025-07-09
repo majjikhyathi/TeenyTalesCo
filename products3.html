@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giftings | TeenyTales Co.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #fff8f4;
+      color: #333;
+      padding: 1rem;
+    }
+    header {
+      background-color: #fff0f5;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #d4608c;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover { color: #d4608c; }
+    h2 {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      color: #d4608c;
+      font-size: 2rem;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+    .product-card {
+      background-color: #ffeef8;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      background-color: #ffd6e8;
+      transform: scale(1.02);
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .product-card h3 {
+      font-size: 1.1rem;
+      color: #d4608c;
+      margin: 0.5rem 0;
+    }
+    .product-card p {
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      background: #ffadc3;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #d4608c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TeenyTalesCo</h1>
+    <nav>
+      <a href="index.html"><i class="fa-solid fa-house"></i></a>
+      <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+    </nav>
+  </header>
+
+  <a href="javascript:history.back()" style="position: absolute; top: 30px; left: 20px; font-size: 30px; text-decoration: none; color: #ff69b4; font-family: 'Comic Sans MS', cursive;">⬅</a>
+  <h2>Gifting & Greetings 🌸</h2>
+
+  <div class="products">
+    <div class="product-card">
+      <img src="gift-envelope.jpg" alt="Cute aesthetic blue peacock gift envelope">
+      <h3>Aesthetic Gift Envelopes</h3>
+      <p>Pack of 20</p>
+      <p>₹300</p>
+      <span onclick="addToFavorites('Aesthetic Gift Envelope')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Aesthetic Gift Envelope', 300)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="thankyou-card.jpg" alt="aesthetic thankyou-cards">
+      <h3>Thankyou Cards</h3>
+      <p>₹200</p>
+      <p>Pack of 12</p>
+      <span onclick="addToFavorites('Thankyou Cards')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Thankyou Cards', 200)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="aesthetic-giftbox.jpg" alt="Aesthetic Gift Box">
+      <h3>Aesthetic Gift Box</h3>
+      <p>₹300</p>
+      <span onclick="addToFavorites('Aesthetic Gift Box')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Aesthetic Gift Box', 300)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="couple1.jpg" alt="Couple Bracelets">
+      <h3>Cute Couple Bracelets</h3>
+      <p>₹800</p>
+      <span onclick="addToFavorites('Cute Couple Bracelets')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Cute Couple Bracelets', 800">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="couple2.jpg" alt="Cute Couple Finger rings">
+      <h3>Cute Couple Finger rings</h3>
+      <p>₹900</p>
+      <span onclick="addToFavorites('Cute Couple Finger rings')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Cute Couple Finger rings', 900)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="mom.jpg" alt="Pillow,keychain and a cup">
+      <h3>Simple gift for your Mom</h3>
+      <p>₹460</p>
+      <span onclick="addToFavorites('Simple gift for your Mom')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Simple gift for your Mom', 460)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="dad.jpg" alt="Wall Hanging">
+      <h3>Gift your Dad</h3>
+      <p>Simple but reminds you all the time</p>
+      <p>₹460</p>
+      <span onclick="addToFavorites('Cute Plush Keychain')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Cute Plush Keychain', 460)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="sibling.jpg" alt="Siblings Scrapbook">
+      <h3>Siblings Scrapbook</h3>
+      <p>A place where you can store your memories.</p>
+      <p>₹700</p>
+      <span onclick="addToFavorites('Siblings Scrapbook')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Siblings Scrapbook', 460)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top: 2rem;">
+    <button class="btn" onclick="window.location.href='index.html'">Back to Home</button>
+  </div>
+
+  <script>
+    function addToFavorites(productName) {
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      if (!favorites.includes(productName)) {
+        favorites.push(productName);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        alert("💖 Added to favorites!");
+      } else {
+        alert("Already in favorites!");
+      }
+    }
+
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("🛒 Added to cart!");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" />
+  <title>TeenyTalesCo - Cart</title>
+  <p>Kindly click a screenshot of the cart.We might ask later.</p>
+  
+ <style>body {
+  font-family: 'Comic Sans MS', cursive;
+  background-color: #fff0f5;
+  padding: 30px;
+  color: #4a4a4a;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  color: #ff69b4;
+  margin-bottom: 40px;
+}
+
+.product {
+  border: 2px dashed #ffb6d9;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px auto;
+  width: 300px;
+  background-color: #ffe4f2;
+  text-align: center;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #ff77a9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: #ff4d88;
+}
+
+.cart-btn {
+  display: block;
+  margin: 20px auto;
+}
+
+#toast {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffccde;
+  color: #7a2c5d;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-family: 'Comic Sans MS', cursive;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 999;
+  font-size: 16px;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; bottom: 10px; }
+  10% { opacity: 1; bottom: 20px; }
+  90% { opacity: 1; bottom: 20px; }
+  100% { opacity: 0; bottom: 10px; }
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe4f2;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 18px;
+  color: #d63384;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity input {
+  width: 40px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 0 5px;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ff4d88;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.billing {
+  background-color: #ffeef8;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 30px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.billing p {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 20px;
+  color: #ff1493;
+}
+
+.checkout-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  width: 100%;
+  background-color: #ff77a9;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.checkout-btn:hover {
+  background-color: #ff4d88;
+} </style>
+<html>
+<head>
+  <title>TeenyTalesCo - Cart</title>
+ </head>
+<body>
+    <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #ff69b4; font-family: 'Comic Sans MS', cursive;">⬅</a>
+<h1>Your Cart 🛒</h1>
+
+<div id="cart-container"></div>
+<div class="billing" id="billing-section"></div>
+<script>
+function updateCartDisplay() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let container = document.getElementById('cart-container');
+  let billing = document.getElementById('billing-section');
+  container.innerHTML = '';
+  let subtotal = 0;
+
+  if (cart.length === 0) {
+    container.innerHTML = "<p style='text-align:center;'>Your cart is empty 💔</p>";
+    billing.innerHTML = "";
+    return;
+  }
+
+  cart.forEach((item, index) => {
+    subtotal += item.price * (item.quantity||1);
+    container.innerHTML += `
+      <div class="cart-item">
+        <div>
+          <div class="item-name">${item.name}</div>
+          <div class="item-price">₹${item.price} × ${item.quantity} = ₹${item.price * item.quantity}</div>
+        </div>
+        <div class="quantity">
+          <button onclick="changeQuantity(${index}, -1)">−</button>
+          <input type="number" value="${item.quantity}" readonly />
+          <button onclick="changeQuantity(${index}, 1)">+</button>
+        </div>
+        <button class="remove-btn" onclick="removeItem(${index})">❌</button>
+      </div>
+    `;
+  });
+
+  let discount = subtotal >= 1000 ? subtotal * 0.1 : 0;
+  let shipping = subtotal < 999 ? 80 : 0;
+  let total = subtotal - discount + shipping;
+
+  billing.innerHTML = `
+    <p>Subtotal: ₹${subtotal.toFixed(2)}</p>
+    <p>Discount: −₹${discount.toFixed(2)}</p>
+    <p>Shipping: ₹${shipping.toFixed(2)}</p>
+    <p class="total">Total: ₹${total.toFixed(2)}</p>
+    <button class="checkout-btn"onclick="goToCheckout()">Place Order</button>
+  `;
+} 
+
+function goToCheckout() {
+  window.location.href = "checkout.html";
+}
+function changeQuantity(index, delta) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart[index].quantity += delta;
+  if (cart[index].quantity <= 0) cart[index].quantity = 1;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartDisplay();
+}
+
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartDisplay();
+}
+
+updateCartDisplay();
+</script>
+</div>
+</body>
+</html>

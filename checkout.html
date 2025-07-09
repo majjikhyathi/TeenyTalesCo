@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TeenyTalesCo - Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("I5EM659F08cR3gOdn");
+  </script>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fff0f5;
+      text-align: center;
+      padding: 40px 20px;
+      color: #d63384;
+    }
+    input, textarea, button {
+      padding: 12px;
+      margin: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      width: 80%;
+      max-width: 400px;
+    }
+    button {
+      background-color: #ff77a9;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff4d88;
+    }
+
+    #toast {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffccde;
+      color: #7a2c5d;
+      padding: 15px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      font-size: 16px;
+      animation: fadeInOut 4s ease-in-out;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; bottom: 10px; }
+      10% { opacity: 1; bottom: 20px; }
+      90% { opacity: 1; bottom: 20px; }
+      100% { opacity: 0; bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #ff69b4;">⬅</a>
+
+  <h1>Checkout Form</h1>
+
+  <form id="checkoutForm">
+    <input type="text" id="name" placeholder="Name" required><br>
+    <input type="text" id="phone" placeholder="Phone" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <textarea id="address" placeholder="Address" required></textarea><br>
+    <button type="submit">Place Order</button>
+  </form>
+
+  <div id="toast">✅ Order placed successfully! 💌</div>
+
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.style.display = "block";
+      setTimeout(() => { toast.style.display = "none"; }, 4000);
+    }
+
+    document.getElementById("checkoutForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const email = document.getElementById("email").value;
+      const address = document.getElementById("address").value;
+
+      const templateParams = {
+        user_name: name,
+        user_phone: phone,
+        user_email: email,
+        user_address: address
+      };
+
+      emailjs.send("service_7vkkn3b", "template_40ksvuq", templateParams)
+        .then(() => {
+          return emailjs.send("service_7vkkn3b", "template_5ob1hue", templateParams);
+        })
+        .then(() => {
+          localStorage.removeItem('cart'); // clear cart silently
+          document.getElementById("checkoutForm").reset();
+          showToast("✅ Order placed successfully! 💌");
+        })
+        .catch((error) => {
+          alert("❌ Failed to send order. Please try again.");
+          console.error("EmailJS Error:", error);
+        });
+    });
+  </script>
+</body>
+</html>

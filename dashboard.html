@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | TeenyTalesCo</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fff8f4;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ffd5ec;
+      padding: 1.5rem;
+      font-size: 2rem;
+      color: #ff6fa2;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #ff85b3;
+    }
+
+    button {
+      background-color: #ff9acb;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: #ff78b0;
+    }
+  </style>
+</head>
+<body>
+<a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #ff69b4; font-family: 'Comic Sans MS', cursive;">⬅</a>
+  <header>TeenyTalesCo</header>
+  <h2 id="greeting"></h2>
+  <p>🎁 Ready to explore our cute collections?</p>
+
+  <button onclick="window.location.href='index.html'">Go to Shop</button>
+  <button onclick="logout()">Logout</button>
+
+  <script>
+    // ✅ Check login state
+    const isLoggedIn = localStorage.getItem("loggedIn") === "true" || sessionStorage.getItem("loggedIn") === "true";
+    if (!isLoggedIn) {
+      alert("Please login first 💖");
+      window.location.href = "login.html";
+    }
+
+    // Show greeting
+    const user = localStorage.getItem("teeny_user");
+    if (user) {
+      document.getElementById("greeting").innerText = Hello, ${user}! 🌸;
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      sessionStorage.removeItem("loggedIn");
+      alert("Logged out successfully 🐻");
+      window.location.href = "login.html"; 
+    }
+  </script>
+
+</body>
+</html>

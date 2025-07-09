@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuromi | TeenyTales Co.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #fff8f4;
+      color: #333;
+      padding: 1rem;
+    }
+    header {
+      background-color: #fff0f5;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #d4608c;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover { color: #d4608c; }
+    h2 {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      color: #d4608c;
+      font-size: 2rem;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+    .product-card {
+      background-color: #ffeef8;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      background-color: #ffd6e8;
+      transform: scale(1.02);
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .product-card h3 {
+      font-size: 1.1rem;
+      color: #d4608c;
+      margin: 0.5rem 0;
+    }
+    .product-card p {
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      background: #ffadc3;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #d4608c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TeenyTales</h1>
+    <nav>
+      <a href="index.html"><i class="fa-solid fa-house"></i></a>
+      <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+    </nav>
+  </header>
+
+  <a href="javascript:history.back()" style="position: absolute; top: 30px; left: 20px; font-size: 30px; text-decoration: none; color: #ff69b4; font-family: 'Comic Sans MS', cursive;">⬅</a>
+  <h2>Kuromi 🌸</h2>
+
+  <div class="products">
+    <div class="product-card">
+      <img src="band-aid.jpg" alt="kuromi">
+      <h3>Kuromi Band-aids</h3>
+      <p>Pack of 25</p>
+      <p>₹200</p>
+      <span onclick="addToFavorites('Kuromi Band-aids')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kuromi Band-aids', 200)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="piggy.jpg" alt="piggy">
+      <h3>Kids Lockbox Only In and Out Piggy Bank</h3>
+      <p>₹350</p>
+      <span onclick="addToFavorites('Kids Lockbox Only In and Out Piggy Bank')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kids Lockbox Only In and Out Piggy Bank', 350)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="doormat1.jpg" alt="doormat">
+      <h3>Kuromi Designer Doormat</h3>
+      <p>₹300</p>
+      <span onclick="addToFavorites('Aesthetic Gift Box')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Aesthetic Gift Box', 300)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="doormat2.jpg" alt="doormat">
+      <h3>Kuromi Designer Doormat</h3>
+      <p>₹300</p>
+      <span onclick="addToFavorites('Kuromi Designer Doormat')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kuromi Designer Doormat', 300)">Add to Cart </button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="doormat3.jpg" alt="doormat">
+      <h3>Kuromi Designer Doormat</h3>
+      <p>₹300</p>
+      <span onclick="addToFavorites('Kuromi Designer Doormat')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kuromi Designer Doormat', 300)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="umbrella.jpg" alt="umbrella">
+      <h3>Kawaii Transparent Umbrella</h3>
+      <p>₹650</p>
+      <span onclick="addToFavorites('Kawaii Transparent Umbrella')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kawaii Transparent Umbrella', 650)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="hair-band.jpg" alt="band">
+      <h3>Hair Band</h3>
+      <p>₹100</p>
+      <span onclick="addToFavorites('Hair Band')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Hair Band', 100)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="gloss.jpg" alt="gloss">
+      <h3>Icecream Moisturizing Lip gloss</h3>
+      <p>₹350</p>
+      <span onclick="addToFavorites('Icecream Moisturizing Lip gloss')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Icecream Moisturizing Lip gloss', 350)">Add to Cart</button>
+    </div>
+  </div>
+    <div class="product-card">
+      <img src="10in1pen.jpg" alt="pen">
+      <h3>Kawaii 10 in 1 pen</h3>
+      <p>₹90</p>
+      <span onclick="addToFavorites('Kawaii 10 in 1 pen')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kawaii 10 in 1 pen', 90)">Add to Cart</button>
+    </div>
+  </div>
+      <div class="product-card">
+      <img src="cartoon.jpg" alt="bag">
+      <h3>Kawaii Felt-Large Capacity Tote Bag</h3>
+      <p>₹350</p>
+      <span onclick="addToFavorites('Kawaii Felt-Large Capacity Tote Bag')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kawaii Felt-Large Capacity Tote Bag', 350)">Add to Cart</button>
+    </div>
+  </div>
+      <div class="product-card">
+      <img src="towel.jpg" alt="towel">
+      <h3>Kawaii Bath Towel</h3>
+      <p>₹500</p>
+      <span onclick="addToFavorites('Kawaii Bath Towel')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kawaii Bath Towel', 500)">Add to Cart</button>
+    </div>
+  </div>
+      <div class="product-card">
+      <img src="glasses.jpg" alt="glasses">
+      <h3>Kuromi Sunglasses</h3>
+      <p>₹250</p>
+      <span onclick="addToFavorites('Kuromi Sunglasses')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Kuromi Sunglasses', 250)">Add to Cart</button>
+    </div>
+  </div>
+  </div>
+      <div class="product-card">
+      <img src="notebook-kuromi.jpg" alt="book">
+      <h3>Cute Kawaii Decompression Notebook</h3>
+      <p>₹200</p>
+      <span onclick="addToFavorites('Cute Kawaii Decompression Notebook')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Cute Kawaii Decompression Notebook', 200)">Add to Cart</button>
+    </div>
+  </div>
+        <div class="product-card">
+      <img src="brush1.jpg" alt="book">
+      <h3>Cute Kuromi Toothbrush</h3>
+      <p>₹135</p>
+      <span onclick="addToFavorites('Cute Kuromi Toothbrush')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Cute Kuromi Toothbrush', 135)">Add to Cart</button>
+    </div>
+  </div>
+
+          <div class="product-card">
+      <img src="brush2.jpg" alt="book">
+      <h3>Cute Panda Toothbrush</h3>
+      <p>₹135</p>
+      <span onclick="addToFavorites('Cute Panda Toothbrush')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Cute Panda Toothbrush', 135)">Add to Cart</button>
+    </div>
+  </div>
+  
+  <div style="text-align:center; margin-top: 2rem;">
+    <button class="btn" onclick="window.location.href='index.html'">Back to Home</button>
+  </div>
+
+  <script>
+    function addToFavorites(productName) {
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      if (!favorites.includes(productName)) {
+        favorites.push(productName);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        alert("💖 Added to favorites!");
+      } else {
+        alert("Already in favorites!");
+      }
+    }
+
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("🛒 Added to cart!");
+    }
+  </script>
+</body>
+</html>

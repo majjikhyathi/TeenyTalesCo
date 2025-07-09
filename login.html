@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | TeenyTalesCo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fff8f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background-color: #ffeef8;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 350px;
+    }
+
+    h2 {
+      color: #ff6fa2;
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      background: #fff;
+      font-size: 1rem;
+    }
+
+    .remember {
+      font-size: 0.9rem;
+      text-align: left;
+      width: 90%;
+      margin: 10px auto;
+      color: #555;
+    }
+
+    button {
+      background-color: #ff9acb;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    a {
+      display: block;
+      margin-top: 15px;
+      text-decoration: none;
+      color: #aa5f86;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 400px) {
+      .box {
+        padding: 1.5rem;
+        max-width: 90%;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .password-field {
+      position: relative;
+      display: inline-block;
+    }
+
+    .password-field input {
+      width: 257.39px;
+      padding-right: 35px;
+    }
+
+    .password-field span {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 16px;
+      color: #d63384;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Login to TeenyTalesCo</h2>
+    <img src="hero.jpg" height="100px" alt="logo">
+    
+    <input type="text" id="username" placeholder="Username or Email"><br>
+    
+    <div class="password-field">
+      <input id="password" type="password" placeholder="Password" />
+      <span onclick="toggleField('password')">👁</span>
+    </div>
+
+    <div class="remember">
+      <input type="checkbox" id="rememberMe"> <label for="rememberMe">Remember Me</label>
+    </div>
+
+    <a href="change-password.html" style="text-decoration: none; color: #d63384; font-weight: bold;">
+      🔒 Forgot Password
+    </a>
+
+    <button onclick="login()">Login</button>
+    <a href="signup.html">Not registered? Sign up here!</a>
+
+    <p><strong>Note: Please login from the same device your credentials were saved on for best experience. 🧸</strong></p>
+  </div>
+
+  <script>
+    function toggleField(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+
+    function login() {
+      const userInput = document.getElementById("username").value.trim();
+      const passInput = document.getElementById("password").value;
+
+      const storedUser = localStorage.getItem("teeny_user");
+      const storedEmail = localStorage.getItem("teeny_email");
+      const storedPass = localStorage.getItem("teeny_pass");
+      const remember = document.getElementById("rememberMe").checked;
+
+      const isUserValid = (userInput === storedUser || userInput === storedEmail) && passInput === storedPass;
+
+      if (isUserValid) {
+        if (remember) {
+          localStorage.setItem("loggedIn", "true");
+        } else {
+          sessionStorage.setItem("loggedIn", "true");
+        }
+        alert("Login successful! ✨");
+        window.location.href = "index.html";
+      } else {
+        alert("Oops! Incorrect username/email or password 💔");
+      }
+    }
+  </script>
+</body>
+</html>

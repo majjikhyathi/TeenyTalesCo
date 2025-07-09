@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | TeenyTalesCo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #fffafc;
+      color: #444;
+    }
+
+    header {
+      background-color: #ffccdd;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 4px #fbbccc;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #ff5ca2;
+    }
+
+    .container {
+      max-width: 95%;
+      width: 480px;
+      margin: 2rem auto;
+      background: #fff0f5;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 0 10px #fdd4e5;
+    }
+
+    .container img {
+      width: 64px;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+
+    h2 {
+      color: #ff69b4;
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    input, textarea {
+      padding: 0.75rem 1rem;
+      border: 1px solid #ffb6d9;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: #fff;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #ff82b2;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff5ca2;
+    }
+
+    .social-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .social-buttons a {
+      display: block;
+      padding: 0.7rem 1.3rem;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+
+    .whatsapp { background-color: #25D366; }
+    .whatsapp:hover { background-color: #1ea855; }
+
+    .instagram { background-color: #E1306C; }
+    .instagram:hover { background-color: #c5285c; }
+
+    .telegram { background-color: #0088cc; }
+    .telegram:hover { background-color: #007ab8; }
+
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 1.5rem 1rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.2rem; }
+      button, input, textarea { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+    <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; font-size: 30px; text-decoration: none; color: #ff69b4; font-family: 'Comic Sans MS', cursive;">⬅</a>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Contact Icon" />
+    <h2>We’d love to hear from you 💌</h2>
+
+    <form action="https://formspree.io/f/xrbkvqge" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message 💬" required></textarea>
+      <input type="hidden" name="_redirect" value="thank-you.html">
+      <button type="submit" onclick="openPage()" >Send Message</button>
+    </form>
+
+    <div class="social-buttons">
+      <a href="https://wa.me/918125298774" target="_blank" class="whatsapp">Chat on WhatsApp</a>
+      <a href= "https://www.instagram.com/teenytales_co?igsh=MW56Zmh5eXhrdnoxdw==" target="_blank" class="instagram">Follow us on Instagram</a>
+      <a href="https://t.me/+9bnfNE5pJyI2OTU1"target="_blank" class="telegram">Join us on Telegram</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 TeenyTalesCo · You’re the reason we’re smiling 🌸
+  </div>
+
+</body>
+<script>
+    function openPage(){
+        window.location.href="thankyou-contact.html";
+    }
+</script>
+</html>

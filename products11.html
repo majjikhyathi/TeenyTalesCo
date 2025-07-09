@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Household | TeenyTales Co.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #fff8f4;
+      color: #333;
+      padding: 1rem;
+    }
+    header {
+      background-color: #fff0f5;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: #d4608c;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover { color: #d4608c; }
+    h2 {
+      text-align: center;
+      margin: 2rem 0 1rem;
+      color: #d4608c;
+      font-size: 2rem;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+    .product-card {
+      background-color: #ffeef8;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      background-color: #ffd6e8;
+      transform: scale(1.02);
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .product-card h3 {
+      font-size: 1.1rem;
+      color: #d4608c;
+      margin: 0.5rem 0;
+    }
+    .product-card p {
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      background: #ffadc3;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #d4608c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TeenyTalesCo</h1>
+    <nav>
+      <a href="index.html"><i class="fa-solid fa-house"></i></a>
+      <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+    </nav>
+  </header>
+
+  <a href="javascript:history.back()" style="position: absolute; top: 30px; left: 20px; font-size: 30px; text-decoration: none; color: #ff69b4; font-family: 'Comic Sans MS', cursive;">⬅</a>
+  <h2>Gifting & Greetings 🌸</h2>
+
+  <div class="products">
+    <div class="product-card">
+      <img src="cutlery.jpg" alt="Cutlery">
+      <h3>Stainless steel fruit design cutlery</h3>
+      <p>₹400</p>
+      <span onclick="addToFavorites('Stainless steel fruit design cutlery')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Stainless steel fruit design cutlery', 400)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="brush.jpg" alt="brush">
+      <h3>Cartoon soft bristle children toothbrush</h3>
+      <p>₹135</p>
+      <span onclick="addToFavorites('Cartoon soft bristle children toothbrush')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Cartoon soft bristle children toothbrush', 135)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="panda-brush.jpg" alt="brush">
+      <h3>Panda brush bristle children toothbrush</h3>
+      <p>₹135</p>
+      <span onclick="addToFavorites('Panda brush bristle children toothbrush')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Panda brush bristle children toothbrush', 135)">Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+      <img src="coin.jpg" alt="Coin">
+      <h3>Coin Purse</h3>
+      <p>₹90</p>
+      <span onclick="addToFavorites('Coin Purse')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Coin Purse', 90)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="wet.jpg" alt="Cane Wet Wipes">
+      <h3>Cane Wet Wipes</h3>
+      <p>₹120</p>
+      <span onclick="addToFavorites('Cane Wet Wipes')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Cane Wet Wipes', 120)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="cup.jpg" alt="Bamboo fibre coffee cup ">
+      <h3>Bamboo fibre coffee cup (470ml)</h3>
+      <p>₹200</p>
+      <span onclick="addToFavorites('Bamboo fibre coffee cup ')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Bamboo fibre coffee cup ', 200)">Add to Cart</button>
+    </div>
+  </div>
+  <div class="product-card">
+      <img src="ware.jpg" alt="ware set">
+      <h3>Bamboo fibre children table ware set</h3>
+      <p>₹600</p>
+      <span onclick="addToFavorites('Bamboo fibre children table ware set')" style="cursor:pointer;color:#ff6fa2;font-size: 1.4rem;">❤</span>
+      <button class="btn" onclick="addToCart('Bamboo fibre children table ware set', 600)">Add to Cart</button>
+    </div>
+  </div>
+
+
+  <div style="text-align:center; margin-top: 2rem;">
+    <button class="btn" onclick="window.location.href='index.html'">Back to Home</button>
+  </div>
+
+  <script>
+    function addToFavorites(productName) {
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      if (!favorites.includes(productName)) {
+        favorites.push(productName);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        alert("💖 Added to favorites!");
+      } else {
+        alert("Already in favorites!");
+      }
+    }
+
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("🛒 Added to cart!");
+    }
+  </script>
+</body>
+</html>
